@@ -16,6 +16,8 @@
       justify-content: center;
     }
     .card {
+      position: relative;
+      overflow: hidden;
       background: #111827;
       padding: 2.5rem;
       border-radius: 1.5rem;
@@ -47,6 +49,18 @@
     a:hover {
       text-decoration: underline;
     }
+    .card::before {
+      /* subtle watermark using the project's logo (spaces URL-encoded) */
+      content: "";
+      position: absolute;
+      inset: 0; /* cover the full card */
+      background: center/contain no-repeat url('Logo%20v0.2.png');
+      /* slightly less transparent and much more colorful but still subtle */
+      opacity: 0.08;
+      filter: grayscale(0) saturate(1.4) contrast(0.95);
+      pointer-events: none;
+    }
+
     .pill {
       display: inline-block;
       border-radius: 999px;
